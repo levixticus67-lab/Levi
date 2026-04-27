@@ -18,7 +18,10 @@ jobs:
           version: 9
 
       - name: Install and Build
-        run: pnpm install --no-frozen-lockfile && PORT=3000 pnpm --filter jojo-collections run build
+	env:
+	 PORT:3000
+	 BASE_PATH:"/"
+        run: pnpm install --no-frozen-lockfile && pnpm --filter jojo-collections run build
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
